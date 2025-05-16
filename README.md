@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ipo-pulse.com: IPO Analytics Tool
 
-## Getting Started
+**Unlock Real-Time Insights into Upcoming IPOs**
 
-First, run the development server:
+The IPO Analytics Tool empowers investors, analysts, and financial enthusiasts with instant, actionable intelligence on companies preparing to go public. By combining official SEC filings with the latest social media trends, our platform helps you make smarter, faster investment decisions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Why Choose IPO Analytics Tool?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Stay Ahead of the Market:** Get notified about new IPOs as soon as they're announced.
+- **All-in-One Dashboard:** See key financial figures, company details, and market sentiment in one place.
+- **Real-Time Social Buzz:** Instantly gauge public excitement and sentiment from X (formerly Twitter) and Reddit.
+- **Data You Can Trust:** We parse official S‑1 filings directly from the SEC's EDGAR database.
+- **Always Up-to-Date:** Our system refreshes data every hour, so you never miss a beat.
+- **Secure & Private:** Only authorized users can access sensitive financial data, protected by industry-leading authentication.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## What Can You Do with It?
 
-To learn more about Next.js, take a look at the following resources:
+- **Track Upcoming IPOs:** Discover which companies are about to go public and when.
+- **Analyze Key Metrics:** View sentiment scores, mention counts, and financial highlights at a glance.
+- **Spot Trends Early:** Identify which IPOs are generating the most buzz online.
+- **Make Informed Decisions:** Combine official data with real-world sentiment for a 360° view.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## How It Works
 
-## Deploy on Vercel
+1. **Automatic SEC Filing Parser:** We fetch and analyze the latest S‑1 filings from the SEC's EDGAR database using advanced AI.
+2. **Social Media Monitoring:** Our tool scans X and Reddit for IPO mentions, trending topics, and public sentiment.
+3. **Interactive Dashboard:** All insights are presented in a beautiful, easy-to-use interface—no technical skills required.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack (for the Curious)
+
+- **Next.js 15** (App Router)
+- **React 19**
+- **Tailwind CSS 4**
+- **Shadcn UI**
+- **Clerk** (secure authentication)
+- **sec-api.io** (for SEC EDGAR access)
+
+---
+
+## Get Started
+
+Want to see the IPO Analytics Tool in action? **Contact us for a demo or early access!**
+
+---
+
+## Questions or Support?
+
+We're here to help! Reach out to our team for more information, support, or partnership opportunities.
