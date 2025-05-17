@@ -1,5 +1,5 @@
-import { ThemeProvider } from '@/components/theme-provider';
-import { ThemeToggle } from '@/components/theme-toogle';
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toogle"; // Assuming typo: theme-toggle
 import {
   ClerkProvider,
   SignedIn,
@@ -7,23 +7,24 @@ import {
   SignInButton,
   SignUpButton,
   UserButton,
-} from '@clerk/nextjs';
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+} from "@clerk/nextjs";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google"; // Assuming Geist_Mono is also from 'next/font/google' or similar
+import "./globals.css";
+
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: 'pulse-ipo',
-  description: 'IPO analytics & data',
+  title: "pulse-ipo",
+  description: "IPO analytics & data",
 };
 
 export default function RootLayout({
@@ -35,7 +36,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} bg-background  antialiased`}
+          className={`${geistSans.variable} ${
+            geistMono.variable
+          } bg-[var(--color-background)] text-[var(--color-foreground)] antialiased`}
         >
           <ThemeProvider
             attribute="class"
