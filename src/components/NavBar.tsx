@@ -1,9 +1,33 @@
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
+import Image from 'next/image';
+import { ThemeToggle } from './themeToggle';
 
 const NavBar = () => {
   return (
-    <div>NavBar</div>
-  )
-}
+    <header className="flex justify-between items-center ">
+      <div className="text-xl font-bold flex text-dark-blue ps-4 gap-1.5 ">
+        <Image
+          className="dark:invert"
+          src="/logo.png"
+          alt="pulse-ipo logo"
+          width="38"
+          height="38"
+          priority
+        />
+        Pulse - IPO
+      </div>
+      <div className="flex items-center p-4 gap-4 h-16">
+        <ThemeToggle />
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
+    </header>
+  );
+};
 
-export default NavBar
-
+export default NavBar;
