@@ -10,8 +10,8 @@ const UnderDevelopmentPage = () => {
         Dashboard Under Development
       </h2>
       <p className="text-lg text-slate-300 max-w-md mb-8">
-        We're working hard to bring you an amazing dashboard experience. Please
-        check back soon for updates!
+        We&apos;re working hard to bring you an amazing dashboard experience.
+        Please check back soon for updates!
       </p>
       <Link href="/">
         <Button
