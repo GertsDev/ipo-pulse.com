@@ -7,7 +7,7 @@ import {
 } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
-import ThemeToggle from './themeToggle';
+import ThemeToggle from './ThemeToggle';
 
 const NavBar = () => {
   return (
