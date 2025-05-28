@@ -121,3 +121,149 @@
   --chart-5: oklch(63% 0.2339 292.03);
 }
 
+/* IPO Analytics Background Animation - Updated for compatibility */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float-up {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float-down {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translateY(20px);
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 0.03;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: scale(1.02);
+  }
+}
+
+/* Background gradient animation */
+.ipo-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--muted)) 25%,
+    hsl(var(--primary) / 0.05) 50%,
+    hsl(var(--muted)) 75%,
+    hsl(var(--background)) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease-in-out infinite;
+}
+
+/* Floating data points layer 1 */
+.ipo-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      hsl(var(--primary) / 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      hsl(var(--chart-2) / 0.08) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      hsl(var(--chart-3) / 0.06) 1.5px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 70% 20%,
+      hsl(var(--chart-4) / 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 300px 300px, 200px 200px, 250px 250px, 180px 180px;
+  animation: float-up 20s ease-in-out infinite;
+}
+
+/* Floating data points layer 2 */
+.ipo-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 60% 40%,
+      hsl(var(--chart-5) / 0.07) 1.5px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      hsl(var(--primary) / 0.05) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 90% 30%,
+      hsl(var(--chart-1) / 0.06) 2px,
+      transparent 2px
+    );
+  background-size: 220px 220px, 160px 160px, 280px 280px;
+  animation: float-down 25s ease-in-out infinite reverse;
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .ipo-background,
+  .ipo-background::before,
+  .ipo-background::after {
+    animation: none;
+  }
+}
+
+/* Dark mode adjustments */
+.dark .ipo-background {
+  background: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    oklch(from var(--background) calc(l + 0.05) c h) 25%,
+    oklch(from var(--primary) calc(l - 0.2) calc(c * 0.2) h) 50%,
+    oklch(from var(--background) calc(l + 0.03) c h) 75%,
+    var(--background) 100%
+  );
+}
