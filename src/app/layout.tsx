@@ -1,9 +1,9 @@
+import { IPOBackground } from '@/components/IPOBackground';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google'; // Assuming Geist_Mono is also from 'next/font/google' or similar
 import './globals.css';
-
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -30,12 +30,14 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} bg-[var(--color-background)] text-[var(--color-foreground)] antialiased`}
         >
+
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
+            <IPOBackground />
             {children}
           </ThemeProvider>
         </body>
