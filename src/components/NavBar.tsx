@@ -11,22 +11,26 @@ import ThemeToggle from './ThemeToggle';
 
 const NavBar = () => {
   return (
-    <header className="flex justify-between items-center ">
+    <header className="flex items-center justify-between border-b backdrop-blur-2xl">
       <Link href="/">
-        <div className="flex ps-4 gap-3 items-center">
+        <div className="flex items-center gap-3 ps-4">
           <Image
             className="dark:invert-0 invert"
+
             src="/logo.png"
             alt="IPO Pulse Logo"
             width={40}
             height={40}
           />
+
+
+
           <span className="text-2xl font-bold tracking-wide text-black dark:text-white">
             IPO PULSE
           </span>
         </div>
       </Link>
-      <div className="flex items-center p-4 gap-4 h-16">
+      <div className="flex items-center h-16 gap-4 p-4">
         <ThemeToggle />
         <SignedOut>
           <SignInButton />
