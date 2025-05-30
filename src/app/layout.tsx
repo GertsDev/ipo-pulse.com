@@ -1,4 +1,3 @@
-import { IPOBackground } from '@/components/IPOBackground';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
@@ -28,7 +27,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} bg-[var(--color-background)] text-[var(--color-foreground)] antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] bg-color[var(--background)] text-color[var(--foreground)] antialiased`}
         >
 
           <ThemeProvider
@@ -37,7 +36,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <IPOBackground />
             {children}
           </ThemeProvider>
         </body>
