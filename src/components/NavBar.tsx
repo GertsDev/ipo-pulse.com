@@ -11,7 +11,7 @@ import ThemeToggle from './ThemeToggle';
 
 const NavBar = () => {
   return (
-    <header className="flex items-center justify-between border-b backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full border-b-2 backdrop-blur-2xl dark:bg-card/30 ">
       <Link href="/">
         <div className="flex items-center gap-3 ps-4">
           <Image
@@ -22,9 +22,6 @@ const NavBar = () => {
             width={40}
             height={40}
           />
-
-
-
           <span className="text-2xl font-bold tracking-wide text-black dark:text-white">
             IPO PULSE
           </span>
