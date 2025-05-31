@@ -91,71 +91,7 @@
 }
 
 body {
-  background: linear-gradient(
-    135deg,
-    var(--color-background) 0%,
-    oklch(0.98 0.01 240) 25%,
-    oklch(0.99 0.005 240) 50%,
-    var(--color-background) 100%
-  );
   min-height: 100vh;
-}
-
-.dark body {
-  background: linear-gradient(
-    135deg,
-    var(--color-background) 0%,
-    oklch(0.05 0.01 240) 25%,
-    oklch(0.06 0.015 240) 50%,
-    var(--color-background) 100%
-  );
-}
-
-/* Custom animations */
-@keyframes gradient-x {
-  0%,
-  100% {
-    background-size: 200% 200%;
-    background-position: left center;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@utility animate-gradient-x {
-  animation: gradient-x 15s ease infinite;
-}
-
-@utility animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
-}
-
-@utility animate-fade-in-delay {
-  animation: fade-in 0.8s ease-out 0.2s forwards;
-  opacity: 0;
-}
-
-@utility animate-fade-in-delay-2 {
-  animation: fade-in 0.8s ease-out 0.4s forwards;
-  opacity: 0;
-}
-
-@utility animate-fade-in-delay-3 {
-  animation: fade-in 0.8s ease-out 0.6s forwards;
-  opacity: 0;
 }
 
 /* Glassmorphism effects */
