@@ -27,7 +27,7 @@ const ThemeToggle = () => {
       size="icon"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
-      className="group cursor-pointer"
+      className="cursor-pointer group"
     >
       <motion.span
         animate={{
