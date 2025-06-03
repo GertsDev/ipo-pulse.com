@@ -1,3 +1,5 @@
+'use client'
+
 import {
   SignedIn,
   SignedOut,
@@ -11,12 +13,11 @@ import ThemeToggle from './ThemeToggle';
 
 const NavBar = () => {
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full border-b-2 backdrop-blur-2xl dark:bg-card/30 ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-1 py-2 border-b-2 md:px-8 backdrop-blur-2xl dark:bg-card/30 ">
       <Link href="/">
         <div className="flex items-center gap-3 ps-4">
           <Image
             className="dark:invert-0 invert"
-
             src="/logo.png"
             alt="IPO Pulse Logo"
             width={40}

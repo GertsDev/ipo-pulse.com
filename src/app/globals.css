@@ -10,7 +10,7 @@
 
   /* Colors - Light mode (default) */
   --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.09 0.005 240);
+  --color-foreground: oklch(0.09 0.005 210);
 
   --color-card: oklch(1 0 0);
   --color-card-foreground: oklch(0.09 0.005 240);
@@ -36,9 +36,7 @@
   --color-border: oklch(0.9 0.02 240);
   --color-input: oklch(0.9 0.02 240);
   --color-ring: oklch(0.15 0.02 240);
-
-  /* Other design tokens */
-  --radius: 0.5rem;
+  /* --radius: 0.5rem; */
 
   /* Chart colors */
   --color-chart-1: oklch(0.7 0.15 35);
@@ -46,6 +44,9 @@
   --color-chart-3: oklch(0.35 0.08 210);
   --color-chart-4: oklch(0.75 0.18 85);
   --color-chart-5: oklch(0.72 0.2 45);
+
+  /* Custom Animation Durations */
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Dark mode overrides */
@@ -86,12 +87,14 @@
 }
 
 /* Base styles */
-* {
-  border-color: var(--color-border);
-}
-
-body {
-  min-height: 100vh;
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    min-height: 100vh;
+    @apply text-foreground;
+  }
 }
 
 /* Glassmorphism effects */
