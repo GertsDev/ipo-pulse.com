@@ -1,3 +1,5 @@
+'use client'
+
 import {
   SignedIn,
   SignedOut,
@@ -11,9 +13,9 @@ import ThemeToggle from './ThemeToggle';
 
 const NavBar = () => {
   return (
-    <header className="flex justify-between items-center ">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full px-1 py-2 border-b-2 md:px-8 backdrop-blur-2xl dark:bg-card/30 ">
       <Link href="/">
-        <div className="flex ps-4 gap-3 items-center">
+        <div className="flex items-center gap-3 ps-4">
           <Image
             className="dark:invert-0 invert"
             src="/logo.png"
@@ -26,7 +28,7 @@ const NavBar = () => {
           </span>
         </div>
       </Link>
-      <div className="flex items-center p-4 gap-4 h-16">
+      <div className="flex items-center h-16 gap-4 p-4">
         <ThemeToggle />
         <SignedOut>
           <SignInButton />

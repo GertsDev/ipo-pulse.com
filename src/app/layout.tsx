@@ -3,7 +3,6 @@ import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google'; // Assuming Geist_Mono is also from 'next/font/google' or similar
 import './globals.css';
-
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -28,8 +27,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} bg-[var(--color-background)] text-[var(--color-foreground)] antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] bg-color[var(--background)] text-color[var(--foreground)] antialiased`}
         >
+
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
