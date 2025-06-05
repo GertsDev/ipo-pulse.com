@@ -10,10 +10,10 @@
 
   /* Colors - Light mode (default) */
   --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.09 0.005 210);
+  --color-foreground: oklch(0.1739 0.0041 285.97);
 
   --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.09 0.005 240);
+  --color-card-foreground: oklch(18.76% 0.004 286.01);
 
   --color-popover: oklch(1 0 0);
   --color-popover-foreground: oklch(0.09 0.005 240);
@@ -51,7 +51,7 @@
 
 /* Dark mode overrides */
 .dark {
-  --color-background: oklch(0.09 0.005 240);
+  --color-background: oklch(14.08% 0.0044 285.82);
   --color-foreground: oklch(0.98 0 0);
 
   --color-card: oklch(0.09 0.005 240);
@@ -89,11 +89,11 @@
 /* Base styles */
 @layer base {
   * {
-    border-color: var(--color-border);
+    @apply border-border;
   }
   body {
     min-height: 100vh;
-    @apply text-foreground;
+    @apply text-foreground bg-background;
   }
 }
 

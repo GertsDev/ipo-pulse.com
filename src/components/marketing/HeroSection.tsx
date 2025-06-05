@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="absolute delay-500 transform -translate-x-1/2 -translate-y-1/2 rounded-full size-96 bg-gradient-to-r from-emerald-300/20 via-blue-300/20 to-purple-300/20 top-1/2 left-1/2 blur-3xl animate-pulse-slow "></div>
       </div>
 
-      <div className="container  mx-auto px-4 md:px-20">
+      <div className="container mx-auto px-4 md:px-20">
         <h1 className="relative z-40 text-center text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight ">
           Invest in{' '}
           <span className="block bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
