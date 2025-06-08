@@ -1,38 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 
-interface FooterLinkProps {
-  href: string;
-  children: React.ReactNode;
-}
-
-const FooterLink: React.FC<FooterLinkProps> = ({ href, children }) => {
-  return (
-    <li>
-      <Link
-        href={href}
-        className="text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors duration-200 text-sm"
-      >
-        {children}
-      </Link>
-    </li>
-  );
-};
-
-interface FooterSectionProps {
-  title: string;
-  children: React.ReactNode;
-}
-
-const FooterSection: React.FC<FooterSectionProps> = ({ title, children }) => {
-  return (
-    <div>
-      <h3 className="text-sm font-semibold  mb-4">{title}</h3>
-      <ul className="space-y-3">{children}</ul>
-    </div>
-  );
-};
-
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
