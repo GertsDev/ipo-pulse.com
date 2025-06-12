@@ -13,8 +13,6 @@ const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     rules: {
-      'import/no-unresolved': 'error',
-      'import/case-sensitive': 'error',
     },
   },
 ];
