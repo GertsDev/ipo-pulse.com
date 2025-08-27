@@ -1,0 +1,243 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+Rules and Guidelines for Junior Developers
+
+**Project About: IPO Analytics Tool**
+The IPO Analytics Tool delivers real-time insights into upcoming Initial Public Offerings (IPOs) by parsing SEC EDGAR filings and aggregating social media data from X (formerly Twitter) and Reddit. It helps investors and analysts make informed decisions by providing metrics like sentiment scores, mention counts, and key figures extracted from S‑1 filings and online discussions.
+
+---
+
+## Key Features
+
+* **EDGAR Filing Parser**: Automatically fetches and parses the latest S‑1 filings from the SEC’s EDGAR database using sec-api.io.
+* **Social Media Metrics**: Gathers and analyzes X and Reddit data to quantify IPO buzz—mention frequencies, trending topics, sentiment scores.
+* **User Dashboard**: Built with React 19, Shadcn UI, and Tailwind CSS 4; presents IPO details, parsed filing data, and social metrics in an interactive, responsive UI.
+* **Authentication**: Managed via Clerk to protect sensitive financial data and ensure only authorized users access the dashboard.
+* **Real‑Time Updates**: Hourly polling for new S‑1 filings and social media metrics to keep information current.
+
+---
+
+## Core Technologies
+
+Next.js 15 (App Router), React 19, Tailwind CSS 4, Shadcn UI, Clerk for auth, sec-api.io for EDGAR access.
+
+---
+
+### 1. Understanding the Project Fundamentals
+
+* **Read the Overview**: Review the “Project About” and architecture diagrams. Know why we chose Next.js 15 and React 19, and how the app directory and App Router work.
+* **Explore the Codebase**: Familiarize yourself with the folder structure—`app/`, `components/`, `lib/`, `styles/`, etc.
+* **Ask Early**: If you’re unsure about requirements, tech choices, or code patterns, ask a senior developer or mentor right away.
+
+---
+
+### 2. Local Development Setup
+
+* **pnpm Only**:
+
+  * Install dependencies: `pnpm install`
+  * Start dev server: `pnpm dev`
+* **Environment Variables**:
+
+  * Store keys (.env.local): `NEXT_PUBLIC_SEC_API_KEY`, `CLERK_NEXT_PUBLIC_KEY`, etc.
+  * Never commit `.env.local`.
+
+---
+
+### 3. Coding Standards and Practices
+
+* **TypeScript**: Mandatory everywhere. Define interfaces for data shapes, component props, and API payloads.
+* **DRY & SOLID**:
+
+  * Don’t duplicate code; extract reusable logic into hooks or utility functions.
+  * Single Responsibility: each component or function should do one thing.
+* **Component Design**:
+
+  * Named exports only.
+  * Clear, typed props via interfaces.
+  * Reuse or extend existing components rather than copy-paste.
+* **Styling with Tailwind CSS & Shadcn UI**:
+
+  * Use Tailwind classes in TSX.
+  * Leverage design tokens in `app/globals.css` (e.g. `--primary`): `bg-[--primary]` not hardcoded hex.
+  * Use `cursor-pointer`, etc., for interactivity.
+  * Target Shadcn components with `data-slot` instead of deep prop drilling (use @web if you don't understand it). Example :
+
+    ```css
+    [data-slot="trigger"] { font-weight: bold; }
+    ```
+* **File Naming**: PascalCase for components, camelCase for functions/hooks.
+* **Self‑Documenting Code**: If logic isn’t obvious, add JSDoc/TSDoc explaining *why*, not *what*.
+* **Accessibility (A11y)**:
+
+  * Use semantic HTML; ensure keyboard focus states, labels, alt text, and ARIA attributes.
+  * Test with screen readers and keyboard-only navigation against WCAG standards.
+* **Security**:
+
+  * Sanitize user input in Server Actions.
+  * Avoid XSS by escaping or validating any data displayed in the UI.
+
+---
+
+### 4. React 19: New Hooks & Patterns
+
+Integrate these into your components and forms:
+
+* **`use()`**
+
+  ```tsx
+  // Server Component
+  const data = use(fetch('/api/ipo')); // Suspends until resolved
+  ```
+
+  Simplifies data fetching inside RSCs with `<Suspense>`.
+
+* **`useActionState()`**
+
+  ```tsx
+  const [state, action, isPending, error] = useActionState(submitIpoForm, initialForm);
+  ```
+
+  Handles Server Actions, optimistic updates, and error states.
+
+* **`useFormStatus()`**
+
+  ```tsx
+  const { pending } = useFormStatus();
+  <button disabled={pending}>Submit</button>
+  ```
+
+  Disables buttons during form submission automatically.
+
+* **`useOptimistic()`**
+
+  ```tsx
+  const [comments, addComment] = useOptimistic(existingComments);
+  addComment(newComment);
+  ```
+
+  Instant UI updates while awaiting server confirmation.
+
+* **Ref Forwarding Simplified**
+
+  ```tsx
+  // React 18 (with forwardRef)
+  const Input = React.forwardRef((props, ref) => <input ref={ref} {...props} />);
+
+  // React 19
+  function Input({ ref, ...props }) {
+    return <input ref={ref} {...props} />;
+  }
+  ```
+
+  No more `forwardRef()` boilerplate—`ref` is just another prop.
+
+---
+
+### 5. Tailwind CSS 4 Updates
+
+Upgrade your styling with these v4 features:
+
+* **Oxide Engine**: Rust‑based compiler for faster builds, smaller CSS bundles.
+* **CSS‑First Theming**:
+
+  ```css
+  @theme {
+    --color-primary: #1a202c;
+  }
+  ```
+
+  Define theme variables directly in CSS for seamless theming.
+* **Enhanced Arbitrary Values**:
+
+  ```html
+  <div class="grid-cols-[65] gap-[1.3rem]">...</div>
+  ```
+
+  More flexible utilities without custom config.
+
+Leverage these to write leaner, faster, and more maintainable styles.
+
+---
+
+### 6. Next.js 15 Best Practices
+
+* **App Router & Layouts**:
+
+  * All routes/pages in `app/`, using file-system routing.
+  * `layout.tsx` for shared UI per segment.
+* **Server Components**:
+
+  * Default to RSCs for non‑interactive UI.
+  * Fetch data inside async components with `use()` or `await fetch()`.
+* **Client Components** (`"use client"`):
+
+  * Only where state, effects, or browser APIs are needed.
+  * Keep them at the leaves of your tree.
+* **Server Actions** (`"use server"`):
+
+  ```ts
+  export async function refreshData(id: string) {
+    revalidatePath(`/ipos/${id}`);
+  }
+  ```
+
+  For mutations and revalidation.
+* **Streaming & Suspense**:
+
+  * Wrap slow-loading parts in `<Suspense fallback={<Loading />} />`.
+  * Provide `loading.tsx` and `error.tsx` files alongside pages/layouts.
+* **Image & Font Optimization**:
+
+  * Use `next/image` and `next/font`.
+* **Route Handlers**:
+
+  * Create API endpoints in `app/api/.../route.ts`.
+* **Performance**:
+
+  * Track Web Vitals, minimize bundle size, code-split, lazy-load.
+
+---
+
+### 7. Version Control (Git & GitHub)
+
+* **Branching**: Feature branches (e.g., `feat/ipo-widget`).
+* **Commits**: Clear summary (<50 chars) + detailed body.
+* **PRs**:
+
+  * Run `pnpm fmt` before pushing.
+  * Describe changes, problem solved, approach.
+  * Request reviews; iterate on feedback.
+* **Sync Often**: `git pull origin main` to avoid conflicts.
+
+---
+
+### 8. Testing & Quality Assurance
+
+* **Manual Testing**: Check data accuracy, responsiveness, accessibility.
+* **Unit & Integration Tests**: Aim for Jest/Vitest + React Testing Library.
+* **Dev Server**: Always `pnpm dev` while coding.
+* **Staging**: Deploy PRs to preview environments (Vercel).
+* **Cross‑Browser**: Test in Chrome, Firefox, Safari.
+
+---
+
+### 9. Collaboration & Communication
+
+* **Share Progress**: Regular updates on blockers and completed tasks.
+* **Ask for Help**: Don’t stay stuck; ask mentors or peers.
+* **Code Reviews**: Provide constructive feedback; focus on clarity, performance, A11y.
+* **Respect & Positivity**: Keep interactions professional and supportive.
+
+---
+
+### 10. Continuous Learning & Excellence
+
+* **Deep Dives**: Explore Next.js 15, React 19, Tailwind CSS 4, sec-api.io, social APIs.
+* **Understand the Why**: Learn reasons behind architectural decisions.
+* **Innovate**: Suggest improvements in code, tooling, or processes.
+
+By following these comprehensive guidelines, you’ll build a performant, accessible, and maintainable IPO Analytics Tool—without breaking anything. Happy coding!
